@@ -12,6 +12,7 @@ public class Inicio extends JFrame{
 
     public Inicio(){
         super("Inicio");
+        setSize(329,200);
         setContentPane(panel1);
     }
 }

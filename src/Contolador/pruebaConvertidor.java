@@ -1,16 +1,17 @@
 package Contolador;
 
+import vistas.Convertidor;
 import vistas.Inicio;
 
 import javax.swing.*;
 
-public class MainConroller {
+public class pruebaConvertidor {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                Inicio inicio=new Inicio();
-                inicio.setVisible(true);
+                Convertidor convertidor=new Convertidor();
+                convertidor.setVisible(true);
             }
         });
     }

@@ -11,6 +11,7 @@ public class pruebaConvertidor {
             @Override
             public void run() {
                 Convertidor convertidor=new Convertidor();
+                convertidor.mostrarConvertidorMoneda();
                 convertidor.setVisible(true);
             }
         });

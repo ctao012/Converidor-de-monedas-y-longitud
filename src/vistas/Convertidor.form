@@ -19,47 +19,43 @@
           <text value="Titulo"/>
         </properties>
       </component>
-      <component id="fc5e2" class="javax.swing.JComboBox" binding="comboBox1" default-binding="true">
+      <component id="fc5e2" class="javax.swing.JComboBox" binding="comboBoxUnidad1">
         <constraints>
           <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <model>
-            <item value="Pesos"/>
-          </model>
+          <model/>
         </properties>
       </component>
-      <component id="b34af" class="javax.swing.JComboBox" binding="comboBox2" default-binding="true">
+      <component id="b34af" class="javax.swing.JComboBox" binding="comboBoxUnidad2">
         <constraints>
           <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <model>
-            <item value="Dólar"/>
-            <item value="Euros"/>
-            <item value="Libras Esterlinas"/>
-            <item value="Yen Japonés"/>
-            <item value="Won sul-coreano"/>
-          </model>
+          <model/>
         </properties>
       </component>
-      <component id="52013" class="javax.swing.JTextField" binding="textField1" default-binding="true">
+      <component id="52013" class="javax.swing.JTextField" binding="textFieldValor1">
         <constraints>
           <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="25"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <text value="0"/>
+        </properties>
       </component>
-      <component id="b0f66" class="javax.swing.JTextField" binding="textField2" default-binding="true">
+      <component id="b0f66" class="javax.swing.JTextField" binding="textFieldValor22">
         <constraints>
           <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="25"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <text value="0"/>
+        </properties>
       </component>
-      <component id="f8258" class="javax.swing.JTextPane" binding="textPaneConversion">
+      <component id="f8258" class="javax.swing.JTextPane" binding="textPaneReultadoConversion">
         <constraints>
           <grid row="5" column="1" row-span="1" col-span="2" vsize-policy="2" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="50"/>

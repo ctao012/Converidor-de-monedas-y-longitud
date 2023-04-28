@@ -1,7 +1,6 @@
 package Contolador;
 
 import vistas.Convertidor;
-import vistas.Inicio;
 
 import javax.swing.*;
 
@@ -11,9 +10,12 @@ public class pruebaConvertidor {
             @Override
             public void run() {
                 Convertidor convertidor=new Convertidor();
-                convertidor.mostrarConvertidorMoneda();
+                convertidor.MostrarConvertidorMoneda();
                 convertidor.setVisible(true);
             }
         });
+
+
+
     }
 }

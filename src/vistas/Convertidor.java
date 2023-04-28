@@ -2,28 +2,23 @@ package vistas;
 
 import javax.swing.*;
 import java.awt.event.*;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 
 public class Convertidor extends JFrame{
     private JPanel panel1;
     private JComboBox comboBoxUnidad1;
     private JComboBox comboBoxUnidad2;
     private JTextField textFieldValor1;
-    private JTextField textFieldValor22;
-    private JTextPane textPaneReultadoConversion;
+    private JTextField textFieldValor2;
+    private JTextPane textPaneResultadoConversion;
     private JLabel jLabelTitulo;
 
     public Convertidor (){
         super("Convertidor");
         setSize(400,310);
         setContentPane(panel1);
-
-        textFieldValor22.addKeyListener(new KeyAdapter() {
-        });
     }
-    public void mostrarConvertidorMoneda (){
-        jLabelTitulo.setText("Converidor de moneda");
+    public void MostrarConvertidorMoneda(){
+        jLabelTitulo.setText("Convertidor de moneda");
         comboBoxUnidad1.addItem("Pesos");
         comboBoxUnidad2.addItem("Dólar");
         comboBoxUnidad2.addItem("Euros");
@@ -33,58 +28,72 @@ public class Convertidor extends JFrame{
         comboBoxUnidad2.addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent e) {
-                convertirMonedas();
+                ConvertirMonedas();
 
             }
         });
         textFieldValor1.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyTyped(KeyEvent e) {
+            public void keyReleased(KeyEvent e) {
                 int key = e.getKeyChar();
-
-                boolean numeros = key >= 48 && key <= 57||key==46;
-
-                if (!numeros)
-                {
+                boolean numeros = key >= 48 && key <= 57 || key == 46;
+                if (!numeros) {
                     e.consume();
+
                 }
-                convertirMonedas();
+                ConvertirMonedas();
+
 
             }
         });
-        textFieldValor22.addKeyListener(new KeyAdapter() {
-            @Override
-            public void keyTyped(KeyEvent e) {
-                convertirMonedasInverso();
-                super.keyTyped(e);
-            }
+        textFieldValor2.addKeyListener(new KeyAdapter() {
+                @Override
+                public void keyReleased (KeyEvent e){
+                    int key = e.getKeyChar();
+                    boolean numeros = key >= 48 && key <= 57 || key == 46;
+                    if (!numeros) {
+                        e.consume();
+                    }
+                    convertirMonedasInverso();
+                }
+
         });
 
 
     }
-    public void convertirMonedas(){
+    public void ConvertirMonedas(){
 
-        double valor1=Double.parseDouble(textFieldValor1.getText());
-        double valor2=Double.parseDouble(textFieldValor22.getText());
+        double valor1=0;
+        double valor2=0;
+        double factorConversion=0;
+
+        try {valor1=Double.parseDouble(textFieldValor1.getText());}catch (NumberFormatException e){}
+
         if (comboBoxUnidad2.getSelectedItem()=="Dólar"){
-            valor2= valor1/4531.5;
+            factorConversion=4531.5;
         }else if (comboBoxUnidad2.getSelectedItem()=="Euros"){
-            valor2= valor1/4962;
+            factorConversion=4962;
         }else if (comboBoxUnidad2.getSelectedItem()=="Libras Esterlinas"){
-            valor2= valor1/5632;
+            factorConversion=5632;
         }else if (comboBoxUnidad2.getSelectedItem()=="Yen Japonés"){
-            valor2= valor1/33.63;
+            factorConversion=33.63;
         }else if (comboBoxUnidad2.getSelectedItem()=="Won sul-coreano"){
-            valor2= valor1/3.41;
+            factorConversion=3.41;
         }
-        textFieldValor22.setText(String.valueOf(valor2));
-        textPaneReultadoConversion.setText((textFieldValor1.getText())+" "+((String)comboBoxUnidad1.getSelectedItem())+" son= "+(textFieldValor22.getText())+" "+((String)comboBoxUnidad2.getSelectedItem()));
+
+        valor2=valor1/factorConversion;
+        textFieldValor2.setText(String.valueOf(valor2));
+        textPaneResultadoConversion.setText(valor1+" "+((String)comboBoxUnidad1.getSelectedItem())+" son= "+valor2+" "+((String)comboBoxUnidad2.getSelectedItem()));
     }
     public void convertirMonedasInverso(){
-
-        double valor1=Double.parseDouble(textFieldValor1.getText());
-        double valor2=Double.parseDouble(textFieldValor22.getText());
+        double valor1=0;
+        double valor2=0;
         double factorConversion=0;
+
+        try {
+            valor2 = Double.parseDouble(textFieldValor2.getText());
+        }catch (NumberFormatException e){}
+
         if (comboBoxUnidad2.getSelectedItem()=="Dólar"){
             factorConversion=4531.5;
         }else if (comboBoxUnidad2.getSelectedItem()=="Euros"){
@@ -98,7 +107,7 @@ public class Convertidor extends JFrame{
         }
         valor1= valor2*factorConversion;
         textFieldValor1.setText(String.valueOf(valor1));
-        textPaneReultadoConversion.setText((textFieldValor1.getText())+" "+((String)comboBoxUnidad1.getSelectedItem())+" son= "+(textFieldValor22.getText())+" "+((String)comboBoxUnidad2.getSelectedItem()));
+        textPaneResultadoConversion.setText(valor1+" "+((String)comboBoxUnidad1.getSelectedItem())+" son= "+valor2+" "+((String)comboBoxUnidad2.getSelectedItem()));
     }
 
 

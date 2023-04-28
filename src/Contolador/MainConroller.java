@@ -11,6 +11,7 @@ public class MainConroller {
             public void run() {
                 Inicio inicio=new Inicio();
                 inicio.setVisible(true);
+                inicio.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             }
         });
     }

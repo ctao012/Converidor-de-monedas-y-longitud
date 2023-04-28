@@ -16,6 +16,7 @@ public class Convertidor extends JFrame{
         super("Convertidor");
         setSize(400,310);
         setContentPane(panel1);
+
     }
     public void MostrarConvertidorMoneda(){
         jLabelTitulo.setText("Convertidor de moneda");
@@ -107,8 +108,99 @@ public class Convertidor extends JFrame{
         }
         valor1= valor2*factorConversion;
         textFieldValor1.setText(String.valueOf(valor1));
-        textPaneResultadoConversion.setText(valor1+" "+((String)comboBoxUnidad1.getSelectedItem())+" son= "+valor2+" "+((String)comboBoxUnidad2.getSelectedItem()));
+        textPaneResultadoConversion.setText(valor2+" "+((String)comboBoxUnidad2.getSelectedItem())+" son= "+valor1+" "+((String)comboBoxUnidad1.getSelectedItem()));
     }
 
+    public void MostrarConvertidorLongitud(){
+        jLabelTitulo.setText("Convertidor de longitud");
+        comboBoxUnidad1.addItem("Metros");
+        comboBoxUnidad2.addItem("Pulgada");
+        comboBoxUnidad2.addItem("Pie");
+        comboBoxUnidad2.addItem("Yarda");
+        comboBoxUnidad2.addItem("Milla");
+        comboBoxUnidad2.addItem("Legua");
+        comboBoxUnidad2.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                ConvertirLongitud();
 
+            }
+        });
+        textFieldValor1.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+                int key = e.getKeyChar();
+                boolean numeros = key >= 48 && key <= 57 || key == 46;
+                if (!numeros) {
+                    e.consume();
+
+                }
+                ConvertirLongitud();
+
+
+            }
+        });
+        textFieldValor2.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased (KeyEvent e){
+                int key = e.getKeyChar();
+                boolean numeros = key >= 48 && key <= 57 || key == 46;
+                if (!numeros) {
+                    e.consume();
+                }
+                ConvertirLongitudInverso();
+            }
+
+        });
+
+
+    }
+    public void ConvertirLongitud(){
+
+        double valor1=0;
+        double valor2=0;
+        double factorConversion=0;
+
+        try {valor1=Double.parseDouble(textFieldValor1.getText());}catch (NumberFormatException e){}
+
+        if (comboBoxUnidad2.getSelectedItem()=="Pulgada"){
+            factorConversion=0.025;
+        }else if (comboBoxUnidad2.getSelectedItem()=="Pie"){
+            factorConversion=0.305;
+        }else if (comboBoxUnidad2.getSelectedItem()=="Yarda"){
+            factorConversion=0.914;
+        }else if (comboBoxUnidad2.getSelectedItem()=="Milla"){
+            factorConversion=1609.344;
+        }else if (comboBoxUnidad2.getSelectedItem()=="Legua"){
+            factorConversion=4828.032;
+        }
+
+        valor2=valor1/factorConversion;
+        textFieldValor2.setText(String.valueOf(valor2));
+        textPaneResultadoConversion.setText(valor1+" "+((String)comboBoxUnidad1.getSelectedItem())+" son= "+valor2+" "+((String)comboBoxUnidad2.getSelectedItem()));
+    }
+    public void ConvertirLongitudInverso(){
+
+        double valor1=0;
+        double valor2=0;
+        double factorConversion=0;
+
+        try {valor2=Double.parseDouble(textFieldValor2.getText());}catch (NumberFormatException e){}
+
+        if (comboBoxUnidad2.getSelectedItem()=="Pulgada"){
+            factorConversion=0.025;
+        }else if (comboBoxUnidad2.getSelectedItem()=="Pie"){
+            factorConversion=0.305;
+        }else if (comboBoxUnidad2.getSelectedItem()=="Yarda"){
+            factorConversion=0.914;
+        }else if (comboBoxUnidad2.getSelectedItem()=="Milla"){
+            factorConversion=1609.344;
+        }else if (comboBoxUnidad2.getSelectedItem()=="Legua"){
+            factorConversion=4828.032;
+        }
+
+        valor1=valor2*factorConversion;
+        textFieldValor1.setText(String.valueOf(valor1));
+        textPaneResultadoConversion.setText(valor2+" "+((String)comboBoxUnidad2.getSelectedItem())+" son= "+valor1+" "+((String)comboBoxUnidad1.getSelectedItem()));
+    }
 }
